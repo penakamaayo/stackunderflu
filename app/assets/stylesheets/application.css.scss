@@ -1,2 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+input{
+  @extend .form-control;
+  width: 50%;
+}
+
