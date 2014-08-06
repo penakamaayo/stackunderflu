@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title StackUnderflow
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse{role: "navigation"}
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"} Stackunderflow
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{href: "/"} Home
+            %li
+              %a{href: "#{sessions_new_path}"}
+                Log
+                = current_user ? "out, " + current_user.last_name.capitalize : "in"
+        / /.navbar-collapse
+      / /.container-fluid
+    
+    .container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+
+      = yield
+
+      - if current_user
+        Logged in as
+        = current_user.last_name
+        = link_to "Log out", log_out_path
+
+      - else
+        = link_to "Sign up", users_new_path
