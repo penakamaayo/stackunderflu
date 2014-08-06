@@ -1,15 +1,15 @@
 %h3 Sign Up
 
-= form_for User.new, :class => "form-horizontal" do |f|
-  / - if @user.errors.any?
-  /   #error_explanation
-  /     %h2
-  /       = pluralize(@user.errors.count, "error")
-  /       prohibited
-  /       this article from being saved:
-  /     %ul
-  /       - @user.errors.full_messages.each do |msg|
-  /         %li= msg
+= form_for @user, :class => "form-horizontal" do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count, "error")
+        prohibited
+        this article from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
   %p
     = f.label :first_name
     %br/
@@ -19,9 +19,9 @@
     %br/
     = f.text_field :last_name
   %p
-    = f.label :username
+    = f.label :email
     %br/
-    = f.text_field :email
+    = f.email_field :email
   %p
     = f.label :password
     %br/

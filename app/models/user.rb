@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :first_name, :presence => true
   attr_accessor :password
   validates_confirmation_of :password
   before_save :encrypt_password
