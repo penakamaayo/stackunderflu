@@ -10,8 +10,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to the site!"
       redirect_to root_url
     else
-      # flash[:alert] = "There was a problem creating your account. Please try again."
-      redirect_to :back
+      redirect_to :back, :notice => "There was a problem creating your account. Please try again."
     end
   end
 
