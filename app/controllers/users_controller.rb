@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome to the site!"
+      flash[:notice] = "You have successfully signed up."
       redirect_to root_url
     else
       redirect_to :back, :notice => "There was a problem creating your account. Please try again."
