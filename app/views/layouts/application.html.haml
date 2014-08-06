@@ -22,9 +22,9 @@
             %li.active
               %a{href: "/"} Home
             %li
-              %a{href: "#{sessions_new_path}"}
-                Log
-                = current_user ? "out, " + current_user.last_name.capitalize : "in"
+              %a{href: "#"}
+                Login
+                / = current_user ? "out, " + current_user.last_name.capitalize : "in"
         / /.navbar-collapse
       / /.container-fluid
     
@@ -33,11 +33,3 @@
         = content_tag :div, msg, :id => "flash_#{name}"
 
       = yield
-
-      - if current_user
-        Logged in as
-        = current_user.last_name
-        = link_to "Log out", log_out_path
-
-      - else
-        = link_to "Sign up", users_new_path
