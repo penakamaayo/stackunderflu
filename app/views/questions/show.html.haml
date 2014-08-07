@@ -1,14 +1,20 @@
-%p#notice= notice
-
-%p
-  %b Title:
+%h2
   = @question.title
 %p
-  %b Body:
-  = @question.body
-%p
-  %b User:
-  = @question.user.full_name
-= link_to 'Edit', edit_question_path(@question)
-\|
-= link_to 'Back', questions_path
+  %b.pull-right 
+    by: 
+    = @question.user.full_name
+  %br/
+%hr
+
+
+%h4 
+  = simple_format @question.body
+
+%hr
+
+%h5 Answers:
+
+/ = link_to 'Edit', edit_question_path(@question)
+/ \|
+/ = link_to 'Back', questions_path
