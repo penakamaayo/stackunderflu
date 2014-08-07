@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :questions
+
   get 'sessions/new'
 
   resources :users
