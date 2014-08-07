@@ -5,3 +5,17 @@ input,textarea,select{
   @extend .form-control;
 }
 
+.my_table{
+  @extend .table-striped;
+  @extend .table-hover;
+  @extend .table;
+  font-size: 16px;
+}
+
+table{
+  @extend .my_table;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: rgba(0,0,35,0.2);
+}
