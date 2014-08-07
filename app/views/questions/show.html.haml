@@ -8,8 +8,7 @@
   = @question.body
 %p
   %b User:
-  = @question.user_id
-
+  = @question.user.full_name
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path
