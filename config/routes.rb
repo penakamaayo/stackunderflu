@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'questions/index'
-
+  get 'questions/new'
+  
   get 'sessions/new'
 
   resources :users
