@@ -14,7 +14,7 @@
   - @questions.each do |question|
     %tr
       %td= 0
-      %td= 0
+      %td= question.answers.count
       %td= question.title
       %td= question.user.full_name
       %td= time_ago_in_words(question.created_at) + " ago"
