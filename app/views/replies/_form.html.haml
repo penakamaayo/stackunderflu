@@ -1,0 +1,10 @@
+%p
+  = form_for [@question, Reply.new] do |f|
+    .field
+      = f.text_area :body, :required => true
+
+    .field
+      / = f.label :user_id
+      = f.hidden_field :user_id, :value => "#{current_user.id}"
+    .actions
+      = f.submit 'Submit', :class => "btn btn-primary"

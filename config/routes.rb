@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'replies/new'
+
+  get 'replies/create'
+
+  get 'replies/destroy'
+
   get 'answers/new'
 
   get 'answers/create'
@@ -8,9 +14,7 @@ Rails.application.routes.draw do
   get 'answers/destroy'
 
   resources :questions do
-    resources :answers do
-      resources :comments
-    end
+    resources :replies
   end
 
   get 'sessions/new'

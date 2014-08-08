@@ -22,11 +22,13 @@
       -if count > 1
         Answers
       -else
-        Answer  
+        Answer 
 
-- @answers.each do |x|
-  = x.body
-  = x.user.first_name
+
+- @answers.each do |answer|
+  = answer.body
+  %i.pull-right
+    = "-" + answer.user.full_name
   %hr
 
 / #div_answers
@@ -34,7 +36,7 @@
 %h5
   Add an answer:
 
-  =render :partial => 'answers/form'
+  =render :partial => 'replies/form'
 
 
   -if (@question.user.id == @current_user) 
