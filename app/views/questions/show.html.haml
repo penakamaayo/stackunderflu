@@ -29,7 +29,10 @@
   = answer.body
   %i.pull-right
     = "-" + answer.user.full_name
-  %hr
+
+  =render :partial => 'replies/form_comment'
+
+  %hr{:style => 'border: 1px solid grey'}
 
   / %h5
   /   #comment_div
