@@ -31,6 +31,17 @@
     = "-" + answer.user.full_name
   %hr
 
+  / %h5
+  /   #comment_div
+  /     %span#comment_count
+  /       -count = @question.comments.count
+  /       #{count} 
+  /     %span#comment_string
+  /       -if count > 1
+  /         Comments
+  /       -else
+  /         Comments 
+
 / #div_answers
 /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
 %h5
