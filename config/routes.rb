@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'answers/new'
+
+  get 'answers/create'
+
+  get 'answers/destroy'
+
   resources :questions
 
   get 'sessions/new'
