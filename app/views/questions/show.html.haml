@@ -5,15 +5,41 @@
     by: 
     = @question.user.full_name
   %br/
-%hr
 
+%hr{:style => 'border: 1px solid grey'}
 
 %h4 
   = simple_format @question.body
 
-%hr
+%hr{:style => 'border: 1px solid grey'}
 
-%h5 Answers:
+%h5
+  #answer_div
+    %span#answer_count
+      -count = @question.answers.count
+      #{count} 
+    %span#answer_string
+      -if count > 1
+        Answers
+      -else
+        Answer  
+
+- @answers.each do |x|
+  = x.body
+  = x.user.first_name
+  %hr
+
+/ #div_answers
+/   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
+%h5
+  Add an answer:
+
+  =render :partial => 'answers/form'
+
+
+  -if (@question.user.id == @current_user) 
+    =link_to 'Edit Question', edit_question_path(@question) 
+=link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
 
 / = link_to 'Edit', edit_question_path(@question)
 / \|

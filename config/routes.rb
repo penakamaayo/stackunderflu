@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   get 'answers/destroy'
 
-  resources :questions
+  resources :questions do
+    resources :answers do
+      resources :comments
+    end
+  end
 
   get 'sessions/new'
 

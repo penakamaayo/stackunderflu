@@ -10,10 +10,10 @@
 
       .field
         = f.label :title
-        = f.text_field :title
+        = f.text_field :title, :required => true
       .field
         = f.label :body
-        = f.text_area :body
+        = f.text_area :body, :required => true
       .field
         / = f.label :user_id
         = f.hidden_field :user_id, :value => "#{current_user.id}"
