@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
      @question = Question.find(params[:id])
-     unless current_user.id != @question.user_id
+     unless current_user.id == @question.user_id
       redirect_to questions_path, :notice => "Not permitted."
      end
   end
