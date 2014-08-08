@@ -18,7 +18,7 @@
       %td= question.user.full_name
       %td= time_ago_in_words(question.created_at) + " ago"
       %td= link_to 'Show', question
-      / # %td= link_to 'Edit', edit_question_path(question)
+      %td= link_to 'Edit', edit_question_path(question)
       / # %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
