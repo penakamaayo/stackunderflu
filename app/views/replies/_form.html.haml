@@ -1,7 +1,7 @@
 %p
   = form_for [@question, Reply.new] do |f|
     .field
-      = f.text_area :body, :required => true
+      = f.text_area :body, :required => true, :style => "height:200px";
 
     .field
       / = f.label :user_id
