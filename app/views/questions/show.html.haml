@@ -1,68 +1,57 @@
-%h2
-  = @question.title
-%p
-  %b.pull-right 
-    by: 
-    = @question.user.full_name
+.col-md-10.col-md-offset-1
+  %blockquote
+    %h1
+      =@question.title
     %br/
-    -if (@question.user.id == @current_user.id) 
-      =link_to 'Edit Question', edit_question_path(@question) 
-  %br/
-
-%hr{:style => 'border: 2px solid grey'}
-
-%h4 
-  = simple_format @question.body
-
-%hr{:style => 'border: 2px solid grey'}
-
-%h5
-%b
-  -answer_count = @question.answers.count
-  #{answer_count} 
-  -if answer_count > 1
-    Answers
-  -else
-    Answer 
-
-%hr{:style => 'border: 2px solid grey'}
-
-- @answers.each do |answer|
-  %b
-    = answer.body
-  %i.pull-right
-    = "-" + answer.user.full_name
-  %br/
-
-  #{answer.comments.count} 
-  -if answer.comments.count > 1
-    Comments
-  -else
-    Comment
-  %br/
-
-  - answer.comments.each do |comment|
-    = comment.body
-    %i.pull-right
-      = comment.user.full_name
-    %br/
+    %p
+      =simple_format(@question.body)
+    %footer
+      %p
+        Posted by:
+        %strong
+        =@question.user.full_name
+      %p
+        Posted on:
+        =@question.created_at.to_formatted_s(:short) 
   
+  %hr{:style => 'border: 2px solid grey'}
 
-  =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
+  %h2
+    -count = @question.answers.count
+    #{count} 
 
-  %hr{:style => 'border: 1px solid grey'}
+    -if count > 1
+      Answers
+    -else
+      Answer
 
- 
-/ #div_answers
-/   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
-%h5
-  %b Add an answer:
-
-  =render :partial => 'replies/form'
+  %hr{:style => 'border: 2px solid grey'}
 
 
-=link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
+  - @answers.each do |answer|
+    %blockquote
+      %h3
+        = answer.body
+        
+      %blockquote
+        - answer.comments.each do |comment|
+          = comment.body
+          %i.pull-right
+            = comment.user.full_name
+          %br/
 
-/ = link_to 'Edit', edit_question_path(@question)
-/ \|
-/ = link_to 'Back', questions_path
+      =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
+
+  / #div_answers
+  /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
+  %h5
+    %b Add an answer:
+
+    =render :partial => 'replies/form'
+
+
+  =link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
+
+  / = link_to 'Edit', edit_question_path(@question)
+  / \|
+  / = link_to 'Back', questions_path
