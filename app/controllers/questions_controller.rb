@@ -13,8 +13,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answers =@question.answers
-    # @comment = Answer.new
-
+    @comment = Reply.new
   end
 
   # GET /questions/new
