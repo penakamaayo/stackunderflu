@@ -32,13 +32,15 @@
     %blockquote
       %h3
         = answer.body
-        
+      %footer.pull-right
+        = answer.user.full_name
+
       %blockquote
         - answer.comments.each do |comment|
           = comment.body
-          %i.pull-right
-            = comment.user.full_name
-          %br/
+          %blockquote
+            %footer
+              = comment.user.full_name
 
       =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
 
