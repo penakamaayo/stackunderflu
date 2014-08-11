@@ -4,57 +4,63 @@
   %b.pull-right 
     by: 
     = @question.user.full_name
+    %br/
+    -if (@question.user.id == @current_user.id) 
+      =link_to 'Edit Question', edit_question_path(@question) 
   %br/
 
-%hr{:style => 'border: 1px solid grey'}
+%hr{:style => 'border: 2px solid grey'}
 
 %h4 
   = simple_format @question.body
 
-%hr{:style => 'border: 1px solid grey'}
+%hr{:style => 'border: 2px solid grey'}
 
 %h5
-  #answer_div
-    %span#answer_count
-      -count = @question.answers.count
-      #{count} 
-    %span#answer_string
-      -if count > 1
-        Answers
-      -else
-        Answer 
+%b
+  -answer_count = @question.answers.count
+  #{answer_count} 
+  -if answer_count > 1
+    Answers
+  -else
+    Answer 
 
+%hr{:style => 'border: 2px solid grey'}
 
 - @answers.each do |answer|
-  = answer.body
+  %b
+    = answer.body
   %i.pull-right
     = "-" + answer.user.full_name
+  %br/
 
-  =render :partial => 'replies/form_comment'
+  #{answer.comments.count} 
+  -if answer.comments.count > 1
+    Comments
+  -else
+    Comment
+  %br/
+
+  - answer.comments.each do |comment|
+    = comment.body
+    %i.pull-right
+      = comment.user.full_name
+    %br/
+  
+
+  =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
 
   %hr{:style => 'border: 1px solid grey'}
 
-  / %h5
-  /   #comment_div
-  /     %span#comment_count
-  /       -count = @comment.response.count
-  /       #{count} 
-  /     %span#comment_string
-  /       -if count > 1
-  /         Comments
-  /       -else
-  /         Comments 
-
+ 
 / #div_answers
 /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
 %h5
-  Add an answer:
+  %b Add an answer:
 
   =render :partial => 'replies/form'
 
 
-  -if (@question.user.id == @current_user) 
-    =link_to 'Edit Question', edit_question_path(@question) 
 =link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
 
 / = link_to 'Edit', edit_question_path(@question)

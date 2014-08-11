@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
 
+  # get 'replies/new'
 
-  get 'replies/new'
+  # get 'replies/create'
 
-  get 'replies/create'
+  # get 'replies/destroy'
 
-  get 'replies/destroy'
+  # get 'answers/new'
 
-  get 'answers/new'
+  # get 'answers/create'
 
-  get 'answers/create'
-
-  get 'answers/destroy'
+  # get 'answers/destroy'
 
   resources :questions do
-    resources :replies
+    resources :replies do
+      resources :replies
+    end
   end
+
+  # resources :replies do
+  #   resources :replies
+  # end
+
 
   get 'sessions/new'
 

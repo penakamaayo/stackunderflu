@@ -1,7 +1,0 @@
-%p
-  = form_for [@question, Answer.new] do |f|
-    .field
-      = f.text_area :body, :required => true
-
-    .actions
-      = f.submit 'Submit', :class => "btn btn-primary"
