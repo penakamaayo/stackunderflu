@@ -27,7 +27,7 @@
 
   - @answers.each do |answer|
     %blockquote
-      %h3
+      %h3{:style => 'background: rgba(0,0,50,0.1)'}
         = answer.body
       %footer.pull-right
         = answer.user.full_name
@@ -37,7 +37,7 @@
           = comment.body
           %blockquote
             %footer
-              = comment.user.full_name
+              = "Posted by " + comment.user.full_name
 
       =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
 
