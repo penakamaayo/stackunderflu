@@ -5,14 +5,11 @@
     %br/
     %p
       =simple_format(@question.body)
-    %footer
-      %p
-        Posted by:
-        %strong
-        =@question.user.full_name
-      %p
-        Posted on:
-        =@question.created_at.to_formatted_s(:short) 
+    %footer.pull-right
+      Asked
+      =@question.created_at.to_formatted_s(:long)
+      ,by
+      =@question.user.full_name 
   
   %hr{:style => 'border: 2px solid grey'}
 
