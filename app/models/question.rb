@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :user
   has_many :answers, :class_name => "Reply", :dependent => :destroy, :as => :response
-  has_many :votes, :as => :voteable
+  has_many :votes, :as => :voteable, :dependent => :destroy
 
   def total_votes
     self.votes.sum(&:vote_count)
