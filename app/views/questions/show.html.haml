@@ -39,7 +39,7 @@
             %footer
               = "Posted by " + comment.user.full_name
 
-      =render :partial => 'replies/form_comment', :locals => {:question => @question,:answer => answer, :comment => @comment}
+      =render :partial => 'replies/form_comment', :locals => {:answer => answer}
 
   / #div_answers
   /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
