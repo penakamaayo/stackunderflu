@@ -12,12 +12,19 @@ Rails.application.routes.draw do
 
   # get 'answers/destroy'
 
+  # resources :questions do
+  #   resources :replies do
+  #     resources :replies
+  #   end
+  # end
+
   resources :questions do
-    resources :replies do
-      resources :replies
-    end
+    resources :answers
   end
 
+  resources :answers, :only => [] do
+    resources :comments
+  end
   # resources :replies do
   #   resources :replies
   # end
