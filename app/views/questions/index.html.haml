@@ -13,7 +13,7 @@
 
   - @questions.each do |question|
     %tr
-      %td= 0
+      %td= question.votes.count
       %td= question.answers.count
       %td= question.title
       %td= question.user.full_name
