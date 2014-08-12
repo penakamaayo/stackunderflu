@@ -1,5 +1,5 @@
 %p
-  = form_for [@question, Reply.new] do |f|
+  = form_for [@question, Reply.new], :url => question_answers_path(@question) do |f|
     .field
       = f.text_area :body, :required => true, :style => "height:200px";
 
