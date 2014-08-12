@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'answers/new'
+
+  get 'answers/create'
+
+  get 'answers/update'
+
+  get 'answers/destroy'
+
   # get 'replies/new'
 
   # get 'replies/create'
