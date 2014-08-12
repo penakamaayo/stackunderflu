@@ -21,6 +21,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:answer_id])
+    @answer.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to question_path(@question) }
+      format.js
+    end
   end
 
   private

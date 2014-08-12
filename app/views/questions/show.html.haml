@@ -30,16 +30,17 @@
       %h3{:style => 'background: rgba(0,0,50,0.1)'}
         = answer.body
       %footer.pull-right
-        = answer.user.full_name
+        = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
 
       %blockquote
         - answer.comments.each do |comment|
           = comment.body
           %blockquote
             %footer
-              = "Posted by " + comment.user.full_name
-
-      =render :partial => 'replies/form_comment', :locals => {:answer => answer}
+              = comment.user.full_name + " " + comment.created_at.to_formatted_s(:short)
+    
+      #comment_form
+        =render :partial => 'replies/form_comment', :locals => {:answer => answer}
 
   / #div_answers
   /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
