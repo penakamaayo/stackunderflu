@@ -2,7 +2,7 @@
   %blockquote
     .row
       .col-md-1
-        =render 'replies/vote'
+        =render 'replies/vote', :locals => {:question => @question}
       .col-md-11
         %h1
           =@question.title

@@ -4,9 +4,14 @@ class VotesController < ApplicationController
 
     voteable = @question
 
-    voteable.votes.create(:user_id => self.current_user.id, :vote_count => params[:vote_count])
+    vote = Vote.where("user_id = ? AND voteable_id = ?", params[:user_id],params[:question_id])
 
-    @vid = voteable.id
+    if vote.count > 0
+      flash[:notice] = "You've already voted for this."
+    else
+      voteable.votes.create(:user_id => self.current_user.id, :vote_count => params[:vote_count])
+      # @vid = voteable.id
+    end
 
     respond_to do |format|
       format.html { redirect_to question_path(@question) }
