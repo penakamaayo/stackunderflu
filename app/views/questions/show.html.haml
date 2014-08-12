@@ -2,6 +2,7 @@
   %blockquote
     %h1
       =@question.title
+      =render 'replies/vote'
     %br/
     %p
       =simple_format(@question.body)
@@ -38,9 +39,17 @@
           %blockquote
             %footer
               = comment.user.full_name + " " + comment.created_at.to_formatted_s(:short)
-    
-      #comment_form
-        =render :partial => 'replies/form_comment', :locals => {:answer => answer}
+      
+      .panel-group#accordion
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{:'data-toggle'=>:collapse, :'data-parent' => "#accordion",:href => "#collapse#{answer.id}"}
+                Add Comment
+          .panel-collapse.collapse{:id => "collapse#{answer.id}"}
+            .panel-body
+              .comments{:id => "div_comments_for_answer_#{answer.id}"}
+                =render :partial => 'replies/form_comment', :locals => {:answer => answer}
 
   / #div_answers
   /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
