@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'answers/new'
+  # get 'answers/new'
 
-  get 'answers/create'
+  # get 'answers/create'
 
-  get 'answers/update'
+  # get 'answers/update'
 
-  get 'answers/destroy'
+  # get 'answers/destroy'
 
   # get 'replies/new'
 
@@ -28,10 +28,16 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers
+    resources :votes
   end
 
   resources :answers, :only => [] do
     resources :comments
+    resources :votes
+  end
+
+  resources :comments, :only => [] do
+    resources :votes
   end
   # resources :replies do
   #   resources :replies
