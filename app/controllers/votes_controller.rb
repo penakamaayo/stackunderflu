@@ -42,39 +42,12 @@ class VotesController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:question_id])
     vote = Vote.find(params[:id])
-    if vote.voteable_type ==  'Question' 
-      @question = vote.voteable
-
-      respond_to do |format|
-        format.html { redirect_to(question_path(@question)) }
-        format.js 
-      end
-
-    else
-      if params[:voteable_type] == 'Answer'
-        @answer = vote.voteable
-        @question = @answer.repliable
-
-        respond_to do |format|
-          format.html { redirect_to(question_path(@question)) }
-          format.js 
-        end
-
-      elsif params[:voteable_type] == 'Comment'
-        @question = Question.find(params[:question_id])
-
-        respond_to do |format|
-          format.html { redirect_to(question_path(@question)) }
-          format.js 
-        end
-
-      else
-        respond_to do |format|
-          format.html { redirect_to(questions_path()) }
-          format.js 
-        end
-      end
+    
+    respond_to do |format|
+      format.html { redirect_to(question_path(@question)) }
+      format.js 
     end
     vote.destroy
   end
