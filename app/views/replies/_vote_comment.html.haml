@@ -14,7 +14,7 @@
     %span.glyphicon.glyphicon-thumbs-up
 
 -else
-  =link_to  comment_vote_path(comment,vote), :method => :delete, :class =>'btn btn-sm' do
+  =link_to  comment_vote_path(comment,vote, :voteable_type => "Comment",:question_id => @question.id), :method => :delete, :class =>'btn btn-sm' do
     %span.glyphicon.glyphicon-thumbs-up
 
 
@@ -27,6 +27,6 @@
     %span.glyphicon.glyphicon-thumbs-down
 
 -else
-  =link_to  comment_vote_path(comment,vote), :method => :delete, :class =>'btn btn-sm' do
+  =link_to  comment_vote_path(comment,vote, :voteable_type => "Comment",:question_id => @question.id), :method => :delete, :class =>'btn btn-sm' do
     %span.glyphicon.glyphicon-thumbs-down
 

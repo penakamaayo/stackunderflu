@@ -51,17 +51,30 @@ class VotesController < ApplicationController
         format.js 
       end
 
-    elsif vote.voteable_type == 'Reply'
-      @answer = vote.voteable
-      @question = @answer.repliable
-
-      respond_to do |format|
-        format.html { redirect_to(question_path(@question)) }
-        format.js 
-      end
     else
+      if params[:voteable_type] == 'Answer'
+        @answer = vote.voteable
+        @question = @answer.repliable
 
-    
+        respond_to do |format|
+          format.html { redirect_to(question_path(@question)) }
+          format.js 
+        end
+
+      elsif params[:voteable_type] == 'Comment'
+        @question = Question.find(params[:question_id])
+
+        respond_to do |format|
+          format.html { redirect_to(question_path(@question)) }
+          format.js 
+        end
+
+      else
+        respond_to do |format|
+          format.html { redirect_to(questions_path()) }
+          format.js 
+        end
+      end
     end
     vote.destroy
   end
