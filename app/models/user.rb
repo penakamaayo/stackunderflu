@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def full_name
     first_name.capitalize + " " + last_name.capitalize 
   end
+
+  def self.already_voted?(voteable,user_id)
+    voteable.votes.where(:user_id => user_id ).first
+  end
 end
