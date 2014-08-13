@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140812030759) do
   create_table "replies", force: true do |t|
     t.text     "body"
     t.integer  "user_id"
-    t.integer  "response_id"
-    t.string   "response_type"
+    t.integer  "repliable_id"
+    t.string   "repliable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "answer_id"

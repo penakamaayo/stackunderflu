@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
 
     @answer = Reply.find(params[:answer_id])
-    @question = @answer.response
+    @question = @answer.repliable
 
     @comment = @answer.comments.create(comment_params)
 

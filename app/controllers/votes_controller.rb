@@ -28,13 +28,13 @@ class VotesController < ApplicationController
       @question = vote.voteable
     else
       @answer = vote.voteable
-      @question = @answer.response
+      @question = @answer.repliable
       @vid = @answer.id
     end
     vote.destroy
 
     respond_to do |format|
-      format.html { redirect_to(questions_path) }
+      format.html { redirect_to(question_path(@question)) }
       format.js 
     end
   end
