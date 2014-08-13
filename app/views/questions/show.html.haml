@@ -54,8 +54,6 @@
             .panel-body
               =render :partial => 'replies/form_comment', :locals => {:answer => answer}
 
-  / #div_answers
-  /   =render :collection => @answers, :locals =>{:comment => @comment, :question => @question}, :partial => 'answers/answer'
   %h5
     %b Add an answer:
 
@@ -64,6 +62,3 @@
 
   =link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
 
-  / = link_to 'Edit', edit_question_path(@question)
-  / \|
-  / = link_to 'Back', questions_path
