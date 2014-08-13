@@ -23,12 +23,26 @@ class VotesController < ApplicationController
   def destroy
     @question = Question.find params[:question_id]
     vote = Vote.find(params[:id])
-
-    respond_to do |format|
-      format.html { redirect_to(question_path(@question)) }
-      format.js 
-    end
     vote.destroy
+
+    redirect_to question_path(@question) 
+  end
+
+  def update
+    @question = Question.find params[:question_id]
+    vote = Vote.find params[:id]
+
+    vote.update(:user_id => self.current_user.id,:vote_value => params[:vote_value])
+
+    redirect_to question_path(@question) 
+  end
+
+
+  def upvote
+    @vote = Vote.find(params[:id])
+
+    if current_user.votes.where().exists?
+    end   
   end
 
 
