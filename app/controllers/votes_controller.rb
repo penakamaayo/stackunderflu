@@ -17,14 +17,11 @@ class VotesController < ApplicationController
 
     flash[:notice] = "Done"
 
-    respond_to do |format|
-      format.html { redirect_to question_path(@question) }
-      format.js
-    end
+    redirect_to question_path(@question)
   end
 
   def destroy
-    @question = Question.find(params[:question_id])
+    @question = Question.find params[:question_id]
     vote = Vote.find(params[:id])
 
     respond_to do |format|
@@ -33,4 +30,18 @@ class VotesController < ApplicationController
     end
     vote.destroy
   end
+
+
+  # def upvote
+  # end
+
+  # def downvote
+  # end
+
+
+
+  # def update
+  # end
+
+
 end
