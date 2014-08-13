@@ -11,16 +11,16 @@ class Vote < ActiveRecord::Base
       first
 
       target_vote.update_attributes(
-        :vote_count => target_vote.vote_count + count)
+        :vote_value => target_vote.vote_value + count)
     else
       voteable.votes.create(
         :user_id=> user, 
-        :vote_count => count)
+        :vote_value => count)
     end
 
   end
 
-  def self.get_vote(voteable,user_id)
+  def self.get_users_vote(voteable,user_id)
     voteable.votes.where(:user_id => user_id ).first
   end
 end

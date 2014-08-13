@@ -1,0 +1,40 @@
+%br/
+-vote = Vote.get_users_vote(@question,current_user.id)
+
+-if vote == nil
+  =link_to  question_votes_path(@question,@answer,:vote_value => 1, :user_id => current_user.id ), :method => :post, :class =>'btn btn-primary' do
+    %span.glyphicon.glyphicon-chevron-up
+
+-elsif @question.users_existing_vote(current_user) == 1
+  =link_to  question_votes_path(@question.id), :method => :post, :class =>'btn btn-primary', :disabled => :disabled do
+    %span.glyphicon.glyphicon-chevron-up
+
+-else
+  =link_to  question_vote_path(@question,vote), :method => :delete, :class =>'btn btn-danger' do
+    %span.glyphicon.glyphicon-chevron-up
+
+%span.btn
+  =@question.total_votes
+
+
+-if vote == nil
+  =link_to  question_votes_path(@question,@answer,:vote_value => -1, :user_id => current_user.id ), :method => :post, :class =>'btn btn-danger' do
+    %span.glyphicon.glyphicon-chevron-down
+
+-elsif @question.users_existing_vote(current_user) == -1
+  =link_to  question_votes_path(@question.id), :method => :post, :class =>'btn btn-danger', :disabled => :disabled do
+    %span.glyphicon.glyphicon-chevron-down
+
+-else
+  =link_to  question_vote_path(@question,vote), :method => :delete, :class =>'btn btn-danger' do
+    %span.glyphicon.glyphicon-chevron-down
+
+/ - if vote
+/   =link_to  question_vote_path(@question,vote), :method => :delete, :class =>'btn btn-danger' do
+/     %span.glyphicon.glyphicon-chevron-down
+
+/ - else
+/   =link_to  question_votes_path(@question,@answer,:vote_value => -1, :user_id => current_user.id), :method => :post, :class =>'btn btn-danger' do
+/     %span.glyphicon.glyphicon-chevron-down
+
+
