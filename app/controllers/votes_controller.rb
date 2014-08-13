@@ -9,7 +9,7 @@ class VotesController < ApplicationController
     if vote.count > 0
       flash[:notice] = "You've already voted for this."
     else
-      voteable.votes.create(:user_id => self.current_user.id, :vote_count => params[:vote_count])
+      voteable.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value])
   
       flash[:notice] = "Vote submitted."
 

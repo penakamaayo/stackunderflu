@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  vote_count: 1
+  vote_value: 1
   user_id: 1
   voteable_id: 1
   voteable_type: MyString
 
 two:
-  vote_count: 1
+  vote_value: 1
   user_id: 1
   voteable_id: 1
   voteable_type: MyString
