@@ -14,7 +14,7 @@ class Reply < ActiveRecord::Base
   end
 
   def users_existing_vote(current_user)
-    user_vote = self.votes.where(:user_id => current_user.id).first
+    user_vote = self.votes.where(:user_id => current_user.id,:voteable_type => "Reply").first
 
     if user_vote
       user_vote.vote_value   

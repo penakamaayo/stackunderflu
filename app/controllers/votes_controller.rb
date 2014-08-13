@@ -1,19 +1,42 @@
 class VotesController < ApplicationController
   def create
-    @question = Question.find(params[:question_id])
+    type = params[:voteable_type]
 
-    voteable = @question
+    if type == 'Question'
+      @question = Question.find(params[:question_id])
+      voteable = @question
+      voteable.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value])
+      flash[:notice] = "Done."
 
-    vote = Vote.where("user_id = ? AND voteable_id = ?", params[:user_id],params[:question_id])
-    voteable.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value])
-    
-    flash[:notice] = "Done."
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
 
-    # @vid = voteable.id
-    respond_to do |format|
-      format.html { redirect_to question_path(@question) }
+    elsif type == 'Answer'
+      @question = Question.find(params[:question_id])
+      @answer = Reply.find(params[:answer_id])
+      voteable = @answer
+
+      @question = @answer.repliable
+      params[:voteable_type] = 'Answer'
+      @answer.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value], :voteable_type =>  type)
+
+      flash[:notice] = "Done."
+
+      respond_to do |format|
+        format.html { redirect_to question_path(@question) }
+        format.js
+      end
+
+    else
+      flash[:notice] = "Gawas"
+      respond_to do |format|
+      format.html { redirect_to questions_path }
       format.js
+      end
     end
+
   end
 
   def destroy
@@ -21,9 +44,7 @@ class VotesController < ApplicationController
     if vote.voteable_type ==  'Question' 
       @question = vote.voteable
     else
-      @answer = vote.voteable
-      @question = @answer.repliable
-      @vid = @answer.id
+
     end
     vote.destroy
 
