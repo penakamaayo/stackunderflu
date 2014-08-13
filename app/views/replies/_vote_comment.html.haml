@@ -1,0 +1,32 @@
+
+%span.btn
+%strong
+  =comment.total_votes
+
+-vote = Vote.get_users_vote(comment,current_user.id)
+
+-if vote == nil
+  =link_to  comment_votes_path(comment,:vote_value => 1, :user_id => current_user.id, :voteable_type => "Comment", :question_id => @question.id), :method => :post, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-up
+
+-elsif comment.users_existing_vote(current_user) == 1
+  =link_to  comment_votes_path(comment.id), :method => :post, :class =>'btn btn-sm', :disabled => :disabled do
+    %span.glyphicon.glyphicon-thumbs-up
+
+-else
+  =link_to  comment_vote_path(comment,vote), :method => :delete, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-up
+
+
+-if vote == nil
+  =link_to  comment_votes_path(comment,:vote_value => -1, :user_id => current_user.id, :voteable_type => "Comment", :question_id => @question.id ), :method => :post, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-down
+
+-elsif comment.users_existing_vote(current_user) == -1
+  =link_to  comment_votes_path(comment.id), :method => :post, :class =>'btn btn-sm', :disabled => :disabled do
+    %span.glyphicon.glyphicon-thumbs-down
+
+-else
+  =link_to  comment_vote_path(comment,vote), :method => :delete, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-down
+

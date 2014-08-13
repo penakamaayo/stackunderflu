@@ -6,7 +6,7 @@ class VotesController < ApplicationController
       @question = Question.find(params[:question_id])
       voteable = @question
       voteable.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value])
-      flash[:notice] = "Done."
+      flash[:notice] = "Done"
 
       respond_to do |format|
         format.html { redirect_to question_path(@question) }
@@ -16,11 +16,10 @@ class VotesController < ApplicationController
     elsif type == 'Answer'
       @question = Question.find(params[:question_id])
       @answer = Reply.find(params[:answer_id])
-      voteable = @answer
 
       @answer.votes.create(:user_id => self.current_user.id, :vote_value => params[:vote_value])
 
-      flash[:notice] = "Done."
+      flash[:notice] = "Done"
 
       respond_to do |format|
         format.html { redirect_to question_path(@question) }
@@ -28,13 +27,18 @@ class VotesController < ApplicationController
       end
 
     else
-      flash[:notice] = "Gawas"
+      @question = Question.find(params[:question_id])
+      @comment = Reply.find(params[:comment_id])
+
+      @comment.votes.create(:user_id => self.current_user.id,:vote_value => params[:vote_value])
+
+      flash[:notice] = "Done"
+
       respond_to do |format|
-      format.html { redirect_to questions_path }
-      format.js
+        format.html { redirect_to question_path(@question) }
+        format.js
       end
     end
-
   end
 
   def destroy

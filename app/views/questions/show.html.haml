@@ -31,13 +31,14 @@
   - @answers.each do |answer|
     %blockquote
       %h3{:style => 'background: rgba(0,0,50,0.1)'}
-        =render :partial => 'replies/vote_answer', :locals => {:answer => answer,:question => @question}
+        = render :partial => 'replies/vote_answer', :locals => {:answer => answer,:question => @question}
         = answer.body
       %footer.pull-right
         = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
 
       %blockquote
         - answer.comments.each do |comment|
+          = render :partial => 'replies/vote_comment', :locals => {:answer => answer,:comment => comment,:question => @question}
           = comment.body
           %blockquote
             %footer
