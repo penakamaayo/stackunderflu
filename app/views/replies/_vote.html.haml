@@ -6,7 +6,7 @@
 -vote = User.already_voted?(voteable,current_user.id)
 
 -if vote == nil
-  - create_path(voteable,1,current_user.id,type,@question.id)
+  - create_path(voteable,current_user.id,type,@question.id)
 
 -elsif voteable.users_existing_vote(current_user) == 1
   =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
