@@ -15,47 +15,29 @@ class VotesController < ApplicationController
       @comment.votes.create(:user_id => self.current_user.id,:vote_value => params[:vote_value])
     end
 
-    flash[:notice] = "Done"
-
+    # flash[:notice] = "Done"
     redirect_to question_path(@question)
-  end
-
-  def destroy
-    @question = Question.find params[:question_id]
-    vote = Vote.find(params[:id])
-    vote.destroy
-
-    redirect_to question_path(@question) 
   end
 
   def update
     @question = Question.find params[:question_id]
     vote = Vote.find params[:id]
-
-    vote.update(:user_id => self.current_user.id,:vote_value => params[:vote_value])
+    
+    if params[:type] == "upvote"
+      upvote(vote)
+    else
+      downvote(vote)
+    end
 
     redirect_to question_path(@question) 
   end
 
 
-  def upvote
-    @vote = Vote.find(params[:id])
-
-    if current_user.votes.where().exists?
-    end   
+  def upvote vote
+    vote.increment!(:vote_value)  
   end
 
-
-  # def upvote
-  # end
-
-  # def downvote
-  # end
-
-
-
-  # def update
-  # end
-
-
+  def downvote vote
+    vote.decrement!(:vote_value)
+  end
 end
