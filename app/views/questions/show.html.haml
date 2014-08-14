@@ -39,7 +39,7 @@
       %blockquote
         - answer.comments.each do |comment|
           = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
-          /= render :partial => 'replies/vote_comment', :locals => {:answer => answer,:comment => comment,:question => @question}
+
           = comment.body
           %blockquote
             %footer
@@ -59,7 +59,6 @@
     %b Add an answer:
 
     =render :partial => 'replies/form'
-
 
   =link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
 

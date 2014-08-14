@@ -1,48 +1,14 @@
 Rails.application.routes.draw do
 
-  # get 'answers/new'
-
-  # get 'answers/create'
-
-  # get 'answers/update'
-
-  # get 'answers/destroy'
-
-  # get 'replies/new'
-
-  # get 'replies/create'
-
-  # get 'replies/destroy'
-
-  # get 'answers/new'
-
-  # get 'answers/create'
-
-  # get 'answers/destroy'
-
-  # resources :questions do
-  #   resources :replies do
-  #     resources :replies
-  #   end
-  # end
-
   resources :questions do
     resources :answers
-    resources :votes
   end
 
   resources :answers, :only => [] do
     resources :comments
-    resources :votes
   end
 
-  resources :comments, :only => [] do
-    resources :votes
-  end
-  # resources :replies do
-  #   resources :replies
-  # end
-
+  resources :votes
 
   get 'sessions/new'
 

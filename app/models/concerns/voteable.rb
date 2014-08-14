@@ -8,13 +8,11 @@ module Voteable
     sum
   end
 
-  def users_existing_vote(current_user)
-    user_vote = self.votes.where(:user_id => current_user.id).first
+  def upvoted_by? current_user
+    self.votes.where(:user_id => current_user.id).first.vote_value == 1
+  end
 
-    if user_vote
-      user_vote.vote_value   
-    else
-      0
-    end
+  def downvoted_by? current_user
+    self.votes.where(:user_id => current_user.id).first.vote_value == -1
   end
 end

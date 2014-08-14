@@ -15,7 +15,5 @@ class ApplicationController < ActionController::Base
 
     voteable.votes.create(:user_id => user_id, :vote_value => 0)
 
-    flash[:notice] = "Done"
-    redirect_to question_path(@question)
   end
 end
