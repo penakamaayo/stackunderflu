@@ -6,9 +6,10 @@
 -vote = User.already_voted?(voteable,current_user.id)
 
 -if vote == nil
-  - create_path(voteable,current_user.id,type,@question.id)
+  - create_path(voteable,current_user.id,@question.id)
 
--elsif voteable.users_existing_vote(current_user) == 1
+/ upvote
+-if voteable.users_existing_vote(current_user) == 1
   =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
     %span.glyphicon.glyphicon-thumbs-up
 
@@ -23,7 +24,7 @@
     =link_to  comment_vote_path(voteable,vote,:question_id => @question.id,:type => "upvote"), :method => :put, :class =>'btn btn-sm' do
       %span.glyphicon.glyphicon-thumbs-up
 
-
+/ downvote
 -if voteable.users_existing_vote(current_user) == -1
   =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
     %span.glyphicon.glyphicon-thumbs-down
