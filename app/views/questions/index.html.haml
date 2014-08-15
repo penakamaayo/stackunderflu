@@ -1,5 +1,9 @@
 %h1 Questions
 
+= link_to 'New Question', new_question_path
+
+%br/
+%br/
 %table
   %tr
     %th Votes
@@ -9,7 +13,7 @@
     %th Date Posted
     %th
     %th
-    / %th
+    %th
 
   - @questions.each do |question|
     %tr
@@ -20,8 +24,5 @@
       %td= time_ago_in_words(question.created_at) + " ago"
       %td= link_to 'Show', question
       %td= link_to 'Edit', edit_question_path(question)
-      / # %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Question', new_question_path
+      / -if current_user.id == question.user_id
+      %td= link_to 'Delete', question, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -23,9 +23,7 @@
               %a{href: "/sessions/new"}
                 Log
                 = current_user ? "out, " + current_user.last_name.capitalize : "in"
-        / /.navbar-collapse
-      / /.container-fluid
-    
+
     .container
       - flash.each do |name, msg|
         .alert.alert-info.alert-dismissible{role: "alert"}

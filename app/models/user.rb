@@ -30,12 +30,6 @@ class User < ActiveRecord::Base
   end
 
   def get_vote voteable
-    vote = voteable.votes.where(:user_id => self.id).first
-
-    if vote
-      vote
-    else
-      voteable.votes.create(:user_id => self.id, :vote_value => 0)
-    end
+    voteable.votes.where(:user_id => self.id).first || voteable.votes.create(:user_id => self.id, :vote_value => 0)
   end
 end

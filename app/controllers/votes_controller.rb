@@ -16,6 +16,7 @@ class VotesController < ApplicationController
     redirect_to question_path @question 
   end
 
+  private
   def upvote vote
     vote.increment! :vote_value 
   end

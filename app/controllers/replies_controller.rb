@@ -5,7 +5,6 @@ class RepliesController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answers =@question.answers
-    # @comment = @answers.comments
   end
 
   def create
