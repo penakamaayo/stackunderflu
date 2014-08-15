@@ -3,13 +3,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-
     @answer = Reply.find(params[:answer_id])
     @question = @answer.repliable
 
     @comment = @answer.comments.create(comment_params)
-
-    # @id = params[:answer_id]
 
     respond_to do |format|
       format.html { redirect_to question_path(@question) }

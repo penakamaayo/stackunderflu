@@ -1,7 +1,6 @@
 class VotesController < ApplicationController
 
   def create
-
   end
 
   def update
@@ -14,9 +13,8 @@ class VotesController < ApplicationController
       downvote vote
     end
 
-    redirect_to question_path(@question) 
+    redirect_to question_path @question 
   end
-
 
   def upvote vote
     vote.increment! :vote_value 

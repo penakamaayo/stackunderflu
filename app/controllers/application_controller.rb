@@ -10,10 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def create_path(voteable,user_id,question_id)
+  def create_path voteable,user_id,question_id
     @question = Question.find(question_id)
-
     voteable.votes.create(:user_id => user_id, :vote_value => 0)
-
   end
 end
