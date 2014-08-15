@@ -2,28 +2,25 @@
 %strong
   =voteable.total_votes
 
-- vote = User.already_voted?voteable,current_user.id
+- vote = current_user.get_vote voteable
 
--if vote
-  -if voteable.upvoted_by?current_user
-    =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
-      %span.glyphicon.glyphicon-thumbs-up
+-if voteable.upvoted_by?current_user
+  =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
+    %span.glyphicon.glyphicon-thumbs-up
 
-    =link_to vote_path(vote,:question_id => @question.id, :type => "downvote"), :method => :put, :class =>'btn btn-sm' do
-      %span.glyphicon.glyphicon-thumbs-down
+  =link_to vote_path(vote,:question_id => @question.id, :type => "downvote"), :method => :put, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-down
 
-  -elsif voteable.downvoted_by?current_user
-    =link_to vote_path(vote,:question_id => @question.id, :type => "upvote"), :method => :put, :class =>'btn btn-sm' do
-      %span.glyphicon.glyphicon-thumbs-up
+-elsif voteable.downvoted_by?current_user
+  =link_to vote_path(vote,:question_id => @question.id, :type => "upvote"), :method => :put, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-up
 
-    =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
-      %span.glyphicon.glyphicon-thumbs-down
+  =link_to  "#", :class =>'btn btn-sm', :disabled => :disabled do
+    %span.glyphicon.glyphicon-thumbs-down
 
-  -else     
-    =link_to vote_path(vote,:question_id => @question.id, :type => "upvote"), :method => :put, :class =>'btn btn-sm' do
-      %span.glyphicon.glyphicon-thumbs-up
-    =link_to vote_path(vote,:question_id => @question.id, :type => "downvote"), :method => :put, :class =>'btn btn-sm' do
-      %span.glyphicon.glyphicon-thumbs-down
-  
--else
-  - create_path(voteable,current_user.id,@question.id)
+-else     
+  =link_to vote_path(vote,:question_id => @question.id, :type => "upvote"), :method => :put, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-up
+  =link_to vote_path(vote,:question_id => @question.id, :type => "downvote"), :method => :put, :class =>'btn btn-sm' do
+    %span.glyphicon.glyphicon-thumbs-down
+

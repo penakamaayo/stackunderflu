@@ -29,7 +29,13 @@ class User < ActiveRecord::Base
     first_name.capitalize + " " + last_name.capitalize 
   end
 
-  def self.already_voted? voteable,user_id
-    voteable.votes.where(:user_id => user_id ).first
+  def get_vote voteable
+    vote = voteable.votes.where(:user_id => self.id).first
+
+    if vote
+      vote
+    else
+      voteable.votes.create(:user_id => self.id, :vote_value => 0)
+    end
   end
 end
