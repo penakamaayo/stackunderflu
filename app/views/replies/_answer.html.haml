@@ -6,14 +6,10 @@
     = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
 
   %blockquote
-    - answer.comments.each do |comment|
-      = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
+    - @comments = answer.comments
 
-      = comment.body
-      %blockquote
-        %footer
-          = comment.user.full_name + " " + comment.created_at.to_formatted_s(:short)
-  
+    =render :collection => @comments, :partial => 'replies/comment'
+
   .panel-group#accordion
     .panel.panel-default
       .panel-heading
