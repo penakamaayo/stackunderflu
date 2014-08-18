@@ -5,10 +5,10 @@ module Voteable
   end
 
   def upvoted_by? current_user
-    self.votes.where(:user_id => current_user.id).first.vote_value == 1
+    self.votes.where(:user_id => current_user.id).first.vote_value >= 1
   end
 
   def downvoted_by? current_user
-    self.votes.where(:user_id => current_user.id).first.vote_value == -1
+    self.votes.where(:user_id => current_user.id).first.vote_value <= -1
   end
 end
