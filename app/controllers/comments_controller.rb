@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:answer_id])
+    @answer = Reply.find(params[:id])
     @answer.destroy
     
     respond_to do |format|
