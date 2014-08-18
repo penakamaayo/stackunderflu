@@ -1,0 +1,9 @@
+%h1
+  =@question.title
+%p
+  =simple_format(@question.body)
+%footer.pull-right
+  Asked
+  =@question.created_at.to_formatted_s(:long)
+  ,by
+  =@question.user.full_name 

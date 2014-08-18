@@ -6,14 +6,18 @@ class VotesController < ApplicationController
   def update
     @question = Question.find params[:question_id]
     vote = Vote.find params[:id]
-    
+    @answers =@question.answers
+
     if params[:type] == "upvote"
       upvote vote
     else
       downvote vote
     end
 
-    redirect_to question_path @question 
+    respond_to do |format|
+         format.html { redirect_to question_path @question }
+         format.js
+    end
   end
 
   private

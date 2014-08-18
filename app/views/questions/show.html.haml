@@ -1,59 +1,15 @@
 .col-md-10.col-md-offset-1
   %blockquote
     .row
-      .col-md-1
+      .col-md-1#total_question_votes
         =render :partial => 'replies/vote', :locals => {:question => @question, :voteable => @question, :type => "question"}
       .col-md-11
-        %h1
-          =@question.title
-    %p
-      =simple_format(@question.body)
-    %footer.pull-right
-      Asked
-      =@question.created_at.to_formatted_s(:long)
-      ,by
-      =@question.user.full_name 
+        =render :partial => 'question'
   
-  %hr{:style => 'border: 2px solid grey'}
+  =render :partial => 'total_answers'
 
-  %h2
-    -count = @question.answers.count
-    #{count} 
-
-    -if count > 1
-      Answers
-    -else
-      Answer
-
-  %hr{:style => 'border: 2px solid grey'}
-
-
-  - @answers.each do |answer|
-    %blockquote
-      %h3{:style => 'background: rgba(0,0,50,0.1)'}
-        = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
-        = answer.body
-      %footer.pull-right
-        = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
-
-      %blockquote
-        - answer.comments.each do |comment|
-          = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
-
-          = comment.body
-          %blockquote
-            %footer
-              = comment.user.full_name + " " + comment.created_at.to_formatted_s(:short)
-      
-      .panel-group#accordion
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title
-              %a{:'data-toggle'=>:collapse, :'data-parent' => "#accordion",:href => "#collapse#{answer.id}"}
-                Add Comment
-          .panel-collapse.collapse{:id => "collapse#{answer.id}"}
-            .panel-body
-              =render :partial => 'replies/form_comment', :locals => {:answer => answer}
+  #answers_comments_div
+    =render :collection => @answers, :locals =>{:question => @question}, :partial => 'replies/answer'
 
   %h5
     %b Add an answer:
