@@ -1,7 +1,7 @@
 %p
   = form_for Reply.new, :remote => true, :url => answer_comments_path(answer) do |f|
     .field
-      = f.text_area :body, :required => true
+      = f.text_area :body, :required => true, :id => 'comment_body'
 
     .field
       / = f.label :user_id
