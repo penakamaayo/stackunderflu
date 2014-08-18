@@ -10,6 +10,6 @@
     - @comments = answer.comments
 
     #div_comments
-      =render :collection => @comments, :partial => 'replies/comment'
-      
+      =render :collection => @comments, :partial => 'replies/comment', :locals => {:question => @question}
+
   =render :partial => 'replies/add_comment', :locals => {:answer => answer}
