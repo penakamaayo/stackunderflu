@@ -2,9 +2,9 @@
   %b Add an answer:
 
 %p
-  = form_for [@question, Reply.new], :url => question_answers_path(@question) do |f|
+  = form_for [@question, Reply.new], :remote => true, :url => question_answers_path(@question) do |f|
     .field
-      = f.text_area :body, :required => true, :style => "height:200px";
+      = f.text_area :body, :required => true, :id => 'answer_body', :style => "height:200px";
 
     .field
       / = f.label :user_id
