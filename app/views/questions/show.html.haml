@@ -11,10 +11,8 @@
   #answers_comments_div
     =render :collection => @answers, :locals =>{:question => @question}, :partial => 'replies/answer'
 
-  %h5
-    %b Add an answer:
-
-    =render :partial => 'replies/form'
-
+  
+  =render :partial => 'replies/form_answer'
+  
   =link_to 'Back to Questions', questions_path, :class=> 'btn btn-default'
 

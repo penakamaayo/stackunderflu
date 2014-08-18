@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @question = @answer.repliable
 
     @comment = @answer.comments.create(comment_params)
+    @comments = @answer.comments
 
     respond_to do |format|
       format.html { redirect_to question_path(@question) }

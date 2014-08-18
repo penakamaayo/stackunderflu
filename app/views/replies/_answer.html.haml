@@ -8,14 +8,7 @@
   %blockquote
     - @comments = answer.comments
 
-    =render :collection => @comments, :partial => 'replies/comment'
+    #div_comments
+      =render :collection => @comments, :partial => 'replies/comment'
 
-  .panel-group#accordion
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{:'data-toggle'=>:collapse, :'data-parent' => "#accordion",:href => "#collapse#{answer.id}"}
-            Add Comment
-      .panel-collapse.collapse{:id => "collapse#{answer.id}"}
-        .panel-body
-          =render :partial => 'replies/form_comment', :locals => {:answer => answer}
+  =render :partial => 'replies/add_comment', :locals => {:answer => answer}

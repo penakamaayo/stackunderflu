@@ -13,7 +13,7 @@ class RepliesController < ApplicationController
       @answer = Reply.find(params[:reply_id])
 
       @comment = @answer.comments.create(comment_params)
-
+      
       @id = params[:reply_id]
 
       respond_to do |format|
