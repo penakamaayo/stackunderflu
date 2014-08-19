@@ -3,12 +3,14 @@
 
 - vote = current_user.get_vote voteable
 
+-@entity = type
+
 -if voteable.upvoted_by?current_user
   %span.glyphicon.glyphicon-thumbs-up.btn.btn-sm
-  =render :partial => 'replies/downvote_link', :locals => {:vote => vote,:question_id => @question.id}
+  =render :partial => 'replies/downvote_link', :locals => {:vote => vote,:question_id => @question.id, :entity => @entity}
 
 -elsif voteable.downvoted_by?current_user
-  =render :partial => 'replies/upvote_link', :locals => {:vote => vote,:question_id => @question.id}
+  =render :partial => 'replies/upvote_link', :locals => {:vote => vote,:question_id => @question.id, :entity => @entity}
   %span.glyphicon.glyphicon-thumbs-down.btn.btn-sm
 
 -else     

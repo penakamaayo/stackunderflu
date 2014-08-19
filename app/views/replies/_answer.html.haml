@@ -1,14 +1,14 @@
 %blockquote
-  .answer_vote_div{:id => "answer_votes_#{answer.id}"}
+  %span.answer_vote_div{:id => "answer_votes_#{answer.id}"}
     = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
 
-  %h3{:style => 'background: rgba(0,0,50,0.1)'}
+  %span{:style => 'background: rgba(0,0,50,0.1);font-size:150%;'}
     = answer.body
 
   %br/
   %footer.pull-right
     = answer.user.full_name + answer.date_posted
-    
+   
   %blockquote
     - @comments = answer.comments
     .comment_div{:id => "comment_#{answer.id}"}

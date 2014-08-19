@@ -1,2 +1,2 @@
-=link_to vote_path(vote,:question_id => @question.id, :type => "upvote"), :remote => true, :method => :put, :class =>'btn btn-sm' do
+=link_to vote_path(vote,:question_id => @question.id, :type => "upvote", :entity => @entity), :remote => true, :method => :put, :class =>'btn btn-sm' do
   %span.glyphicon.glyphicon-thumbs-up
