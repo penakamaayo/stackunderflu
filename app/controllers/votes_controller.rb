@@ -8,8 +8,8 @@ class VotesController < ApplicationController
     vote = Vote.find params[:id]
     @answers =@question.answers
 
-    @item_voted = params[:entity]
-    
+    @item_voted = params[:item_voted]
+
     unless @item_voted == "question"
       @answer = @comment = Reply.find vote.voteable_id
       @vid = @answer.id
