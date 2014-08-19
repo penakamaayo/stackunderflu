@@ -2,14 +2,15 @@
   %h3{:style => 'background: rgba(0,0,50,0.1)'}
     = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
     = answer.body
-    %br/
+
+  %br/
   %footer.pull-right
     = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
 
   %blockquote
-    - @comments = answer.comments
-
     #div_comments
+      - @comments = answer.comments
       =render :collection => @comments, :partial => 'replies/comment', :locals => {:question => @question}
 
-  =render :partial => 'replies/add_comment', :locals => {:answer => answer}
+      =render :partial => 'replies/add_comment', :locals => {:answer => answer}
+      
