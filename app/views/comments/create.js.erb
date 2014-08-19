@@ -1,1 +1,3 @@
 $('#comment_' + <%= @aid %>).append("<%=j render :partial => '/replies/comment', :locals => {:comment => @comment}%>");
+
+$('#comment_body').val("");
