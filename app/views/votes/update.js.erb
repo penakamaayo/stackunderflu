@@ -2,3 +2,7 @@ $('#total_question_votes').html("<%=j render :partial => '/replies/vote', :local
 
 $('#answers_comments_div').html("<%=j render :collection => @answers, :locals =>{:question => @question}, :partial => 'replies/answer' %>");
 
+// $('#answers_votes_div').html(":partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}"); 
+
+// $('#comments_votes_div').html("render :partial => '/replies/comment', :locals => {:comment => @comment}"); 
+

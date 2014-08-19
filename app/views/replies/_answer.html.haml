@@ -1,5 +1,5 @@
 %blockquote
-  %h3{:style => 'background: rgba(0,0,50,0.1)'}
+  %h3#answers_votes_div{:style => 'background: rgba(0,0,50,0.1)'}
     = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
     = answer.body
 

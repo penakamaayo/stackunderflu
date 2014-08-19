@@ -1,4 +1,5 @@
-=render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
+#comments_votes_div
+  =render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
 
 = comment.body
 %blockquote
