@@ -1,12 +1,14 @@
 %hr{:style => 'border: 2px solid grey'}
 
 %h2
-  -count = @question.answers.count
-  #{count} 
+  %span#answer_count_value
+    -count = @question.answers.count
+    #{count} 
 
-  -if count > 1
-    Answers
-  -else
-    Answer
+  %span#answer_count_string
+    -if count > 1
+      Answers
+    -else
+      Answer
 
 %hr{:style => 'border: 2px solid grey'}

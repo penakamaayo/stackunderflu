@@ -1,3 +1,12 @@
-$('#answers_comments_div').append("<%=j render :collection => @answers, :locals =>{:question => @question}, :partial => 'replies/answer' %>");
+$('#answers_comments_div').append("<%=j render :partial => 'replies/answer', :locals => {:answer => @answer} %>");
+
+var count = parseInt($('span#answer_count_value').text());
+count ++;
+
+$('span#answer_count_value').text(count)
+if(count > 1)
+  $('span#answer_count_string').text("Answers")
+else
+  $('span#answer_count_string').text("Answer")
 
 document.getElementById('answer_body').value='';
