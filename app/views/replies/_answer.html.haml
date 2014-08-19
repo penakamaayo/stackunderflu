@@ -5,12 +5,11 @@
 
   %br/
   %footer.pull-right
-    = answer.user.full_name + " " + answer.created_at.to_formatted_s(:short)
-
+    = answer.user.full_name + answer.date_posted
   %blockquote
     #div_comments
       - @comments = answer.comments
       =render :collection => @comments, :partial => 'replies/comment', :locals => {:question => @question}
 
       =render :partial => 'replies/add_comment', :locals => {:answer => answer}
-      
+

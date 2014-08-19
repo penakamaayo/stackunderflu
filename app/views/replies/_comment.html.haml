@@ -3,7 +3,7 @@
 = comment.body
 %blockquote
   %footer
-    = comment.user.full_name + " " + comment.created_at.to_formatted_s(:short)
+    = comment.user.full_name + comment.date_posted
     
     / .pull-right
     /   -if current_user.id == comment.user.id

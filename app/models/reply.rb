@@ -6,4 +6,8 @@ class Reply < ActiveRecord::Base
   has_many :votes, :as => :voteable, :dependent => :destroy
   
   include Voteable
+
+  def date_posted
+    ""<<created_at.to_formatted_s(:short)
+  end
 end
