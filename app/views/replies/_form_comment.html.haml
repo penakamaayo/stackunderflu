@@ -1,5 +1,5 @@
 %p
-  = form_for [answer,Reply.new], :url => answer_comments_path(answer,Reply.new) do |f|
+  = form_for [answer,Reply.new], :remote => true, :url => answer_comments_path(answer,Reply.new) do |f|
     .field
       = f.text_area :body, :required => true, :id => 'comment_body'
 

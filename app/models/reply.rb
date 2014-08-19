@@ -8,6 +8,6 @@ class Reply < ActiveRecord::Base
   include Voteable
 
   def date_posted
-    ""<<created_at.to_formatted_s(:short)
+    " "<<created_at.to_formatted_s(:short)
   end
 end

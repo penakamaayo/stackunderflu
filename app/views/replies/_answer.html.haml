@@ -6,10 +6,11 @@
   %br/
   %footer.pull-right
     = answer.user.full_name + answer.date_posted
+    
   %blockquote
-    #div_comments
-      - @comments = answer.comments
+    - @comments = answer.comments
+    .comment_div{:id => "comment_#{answer.id}"}
       =render :collection => @comments, :partial => 'replies/comment', :locals => {:question => @question}
 
-      =render :partial => 'replies/add_comment', :locals => {:answer => answer}
+  =render :partial => 'replies/add_comment', :locals => {:answer => answer}
 

@@ -1,1 +1,1 @@
-// $('#div_comments').html("<%=j render :collection => @comments, :partial => 'replies/comment', :locals => {:question => @question} %>");
+$('#comment_' + <%= @aid %>).append("<%=j render :partial => '/replies/comment', :locals => {:comment => @comment}%>");

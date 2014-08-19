@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
     @answer = Reply.find(params[:answer_id])
     @question = @answer.repliable
 
+    @aid = params[:answer_id]
+
     @comment = @answer.comments.create(comment_params)
     @comments = @answer.comments
 
