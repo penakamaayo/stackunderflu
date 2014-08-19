@@ -1,5 +1,5 @@
 %blockquote
-  .vote_div{:id => "vote_#{answer.id}"}
+  .answer_vote_div{:id => "answer_votes_#{answer.id}"}
     = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
 
   %h3{:style => 'background: rgba(0,0,50,0.1)'}

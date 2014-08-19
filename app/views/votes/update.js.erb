@@ -1,8 +1,6 @@
 $('#total_question_votes').html("<%=j render :partial => '/replies/vote', :locals => {:question => @question, :voteable => @question, :type => "question"} %>");
 
-// $('#answers_comments_div').html("<%=j render :collection => @answers, :locals =>{:question => @question}, :partial => 'replies/answer' %>");
+$('#comment_votes_'+ <%= @vid %>).html("<%=j render :partial => '/replies/comment', :locals => {:comment => @comment} %>");
 
-// $('#answer_votes_#{@vid}').html("<%=j render :partial => '/replies/vote', :locals => {:question => @question, :voteable => @answer, :type => "answer"} %>"); 
-
-$('#comment_votes_'+ <%= @vid %>).html("<%=j render :partial => '/replies/comment', :locals => {:comment => @comment} %>"); 
+$('#answer_votes_'+ <%= @vid %>).html("<%=j render :partial => 'replies/vote', :locals => {:question => @question, :voteable => @answer, :type => "answer"} %>"); 
 
