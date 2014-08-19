@@ -1,13 +1,13 @@
-#comments_votes_div
+.comment_vote_div{:id => "comment_votes_#{comment.id}"}
   =render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
 
-= comment.body
-%blockquote
-  %footer
-    = comment.user.full_name + comment.date_posted
-    
-    / .pull-right
-    /   -if current_user.id == comment.user.id
-    /     = link_to "Delete comment", answer_comment_path(answer,comment,:question_id => @question.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  = comment.body
+  %blockquote
+    %footer
+      = comment.user.full_name + comment.date_posted
+      
+      / .pull-right
+      /   -if current_user.id == comment.user.id
+      /     = link_to "Delete comment", answer_comment_path(answer,comment,:question_id => @question.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 

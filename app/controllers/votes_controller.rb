@@ -8,7 +8,9 @@ class VotesController < ApplicationController
     vote = Vote.find params[:id]
     @answers =@question.answers
 
-    @answer = @comment = vote.voteable
+    @answer = vote.voteable
+    @comment = Reply.find vote.voteable_id
+    @vid = @answer.id
 
     if params[:type] == "upvote"
       upvote vote
