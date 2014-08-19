@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     first_name.capitalize + " " + last_name.capitalize 
   end
 
+  def full_name_with_username
+    self.full_name + " @"+ username
+  end
+
   def get_vote voteable
     voteable.votes.where(:user_id => self.id).first || voteable.votes.create(:user_id => self.id, :vote_value => 0)
   end
