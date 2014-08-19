@@ -16,6 +16,10 @@
         %br/
         = f.email_field :email , required: true
       %p
+        = f.label :username
+        %br/
+        = f.text_field :username , required: true
+      %p
         = f.label :password
         %br/
         = f.password_field :password

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, :presence => true
   validates :email, :presence => true, uniqueness: {:message => "Email already taken."}
-  
+  validates :username, :presence => true, uniqueness: {:message => "Username already taken."}
+
   attr_accessor :password
 
   validates_confirmation_of :password
