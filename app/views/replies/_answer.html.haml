@@ -3,7 +3,7 @@
     = render :partial => 'replies/vote', :locals => {:question => @question, :voteable => answer, :type => "answer"}
 
   %span{:style => 'background: rgba(0,0,50,0.1);font-size:150%;'}
-    = answer.body
+    = simple_format(auto_link(answer.body))
 
   %br/
   %footer.pull-right

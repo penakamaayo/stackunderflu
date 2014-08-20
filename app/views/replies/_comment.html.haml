@@ -1,7 +1,7 @@
 .comment_vote_div{:id => "comment_votes_#{comment.id}"}
   =render :partial => 'replies/vote', :locals => {:question => @question, :voteable => comment, :type => "comment"}
 
-  = comment.body
+  = simple_format(auto_link(comment.body))
   %blockquote
     %footer
       = comment.user.full_name + comment.date_posted
