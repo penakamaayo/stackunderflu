@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers
+    get :filter_tag, on: :member 
   end
 
   resources :answers, :only => [] do
