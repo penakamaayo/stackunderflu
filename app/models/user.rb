@@ -1,18 +1,19 @@
 class User < ActiveRecord::Base
-  validates :first_name, :last_name, :email, :presence => true
-  validates :email, :presence => true, uniqueness: {:message => "Email already taken."}
-  validates :username, :presence => true, uniqueness: {:message => "Username already taken."}
-
   attr_accessor :password
 
-  validates_confirmation_of :password
   before_save :encrypt_password
 
   has_many :questions, :dependent => :destroy
   has_many :answers, :dependent => :destroy
   has_many :votes, :dependent => :destroy 
   
-  def encrypt_password
+  validates_confirmation_of :password
+  validates :first_name, :last_name, :email, :presence => true
+  validates :email, :presence => true, uniqueness: {:message => "Email already taken."}
+  validates :username, :presence => true, uniqueness: {:message => "Username already taken."}
+
+  # //lay self
+  def self.encrypt_password
     self.password_salt = BCrypt::Engine.generate_salt
     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   end
@@ -35,6 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def get_vote voteable
-    voteable.votes.where(:user_id => self.id).first || voteable.votes.create(:user_id => self.id, :vote_value => 0)
+    voteable.votes.where(
+      :user_id => self.id).first || voteable.votes.create(:user_id => self.id, :vote_value => 0)
   end
 end
