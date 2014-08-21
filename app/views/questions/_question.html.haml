@@ -9,7 +9,7 @@
 %p
   Tags:
   %i
-    =simple_format(@question.tags_list)
+    =simple_format(link_tag(@question.tags_list))
 %footer.pull-right
   Asked
   =@question.created_at.to_formatted_s(:long)

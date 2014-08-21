@@ -70,11 +70,13 @@ class QuestionsController < ApplicationController
   end
 
   def filter_tag
-    @tag = Tag.find(params[:id])
-    if false
+    @tag = Tag.find_by_name(params[:id])
+    @questions = Question.all
 
-    else
-      @questions = Question.all
+    @question_arr = []
+
+    @questions.each do |question|
+      @question_arr << question if question.tags_list.split(", ").include?(@tag.name)
     end
   end
 

@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
   end
 
   def tags_list=(tags)
-    tag_names = tags.split(", ")
+    tag_names = tags.split(",")
     
     self.tags = tag_names.map do |name|
       Tag.where(:name => name).first || Tag.create(:name => name)

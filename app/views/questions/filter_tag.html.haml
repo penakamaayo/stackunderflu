@@ -17,17 +17,21 @@
     %th Votes
     %th Answers
     %th Title
+    %th Tags
     %th Posted by
     %th Date Posted
     %th
     %th
     %th
 
-  - @questions.each do |question|
+  - @question_arr.each do |question|
     %tr
       %td= question.total_votes
       %td= question.answers.count
       %td= question.title
+      %td
+        %i
+          = simple_format(link_tag(question.tags_list))
       %td= question.user.full_name
       %td= time_ago_in_words(question.created_at) + " ago"
       %td= link_to 'Show', question
