@@ -1,8 +1,11 @@
 class AnswersController < ApplicationController
-  def new
+  def index
   end
 
   def show
+  end
+  
+  def new
   end
 
   def create
@@ -14,6 +17,9 @@ class AnswersController < ApplicationController
       format.html { redirect_to question_path(@question) }
       format.js 
     end
+  end
+
+  def edit
   end
 
   def update
@@ -29,6 +35,7 @@ class AnswersController < ApplicationController
       format.js
     end
   end
+  
   private
   def answer_params
     params.require(:reply).permit(:user_id, :body)

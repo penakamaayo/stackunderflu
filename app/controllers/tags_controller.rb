@@ -1,5 +1,4 @@
-class TagsController < ApplicationController
-  
+class TagsController < ApplicationController 
   def index
     @tags = Tag.all
   end
@@ -8,5 +7,4 @@ class TagsController < ApplicationController
     @tag = Tag.find_by_name(params[:id])
     @questions = @tag.questions
   end
-
 end

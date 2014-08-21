@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   end
 
   private
-
   def require_login
     if current_user
 

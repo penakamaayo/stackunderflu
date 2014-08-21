@@ -5,7 +5,7 @@ module QuestionsHelper
     result = []
 
     tag_names.each do |tag|
-      result<<convert_to_link(tag)
+      result << convert_to_link(tag)
     end
     
     result.join(", ")

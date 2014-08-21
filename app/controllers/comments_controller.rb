@@ -1,4 +1,10 @@
 class CommentsController < ApplicationController
+  def index
+  end
+
+  def show
+  end
+
   def new
   end
 
@@ -15,6 +21,9 @@ class CommentsController < ApplicationController
       format.html { redirect_to question_path(@question) }
       format.js 
     end
+  end
+
+  def edit
   end
 
   def update
