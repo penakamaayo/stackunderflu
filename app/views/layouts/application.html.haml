@@ -20,7 +20,7 @@
             %li
               = link_to "Home", "/"
             %li
-              %a.btn.btn-default{href: "/sessions/new"}
+              %a{href: "/sessions/new"}
                 Log
                 = current_user ? "out, " + current_user.last_name.capitalize : "in"
 
