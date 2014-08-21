@@ -14,6 +14,6 @@ module QuestionsHelper
 
   private
   def convert_to_link tag
-    link_to tag, filter_tag_question_path(tag).html_safe
+    link_to tag, tag_path(tag).html_safe
   end
 end

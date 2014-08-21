@@ -2,26 +2,23 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers
-    get :filter_tag, on: :member 
   end
 
   resources :answers, :only => [] do
     resources :comments
   end
-
+  
+  resources :users
   resources :votes
+  resources :tags
 
   get 'sessions/new'
-
-  resources :users
-
   get 'home/index'
-
   get 'users/new'
 
   # get "/log-in" => "sessions#new"
-  post "/log-in" => "sessions#create", as: :log_in
-  get "/log-out" => "sessions#destroy", as: :log_out
+  post "/log-in" => "sessions#create", :as => :log_in
+  get "/log-out" => "sessions#destroy", :as => :log_out
 
 
   # The priority is based upon order of creation: first created -> highest priority.
