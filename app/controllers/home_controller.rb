@@ -5,12 +5,14 @@ class HomeController < ApplicationController
   end
 
   private
-  def require_login
-    if current_user
 
-    else
-      # flash[:error] = "You must be logged in to access this section"
-      redirect_to sessions_new_url
+    def require_login
+      if current_user
+
+      else
+        # flash[:error] = "You must be logged in to access this section"
+        redirect_to sessions_new_url
+      end
     end
-  end
+    
 end

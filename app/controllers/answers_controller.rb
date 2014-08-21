@@ -37,8 +37,9 @@ class AnswersController < ApplicationController
   end
   
   private
-  def answer_params
-    params.require(:reply).permit(:user_id, :body)
-  end
+  
+    def answer_params
+      params.require(:reply).permit(:user_id, :body)
+    end
 
 end

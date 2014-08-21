@@ -27,11 +27,12 @@ class VotesController < ApplicationController
   end
 
   private
-  def upvote vote
-    vote.increment! :vote_value 
-  end
+    def upvote vote
+      vote.increment! :vote_value 
+    end
 
-  def downvote vote
-    vote.decrement! :vote_value
-  end
+    def downvote vote
+      vote.decrement! :vote_value
+    end
+    
 end

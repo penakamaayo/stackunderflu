@@ -100,4 +100,5 @@ class QuestionsController < ApplicationController
       redirect_to sessions_new_url
     end
   end
+  
 end
