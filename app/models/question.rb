@@ -8,11 +8,16 @@ class Question < ActiveRecord::Base
   include Voteable
 
   def tags_list
-    tags.map { |tag| tag.name }.join(",")
+    self.tags.map do |tag|
+      tag.name
+    end.join(", ")
   end
 
   def tags_list=(tags)
-    tag_names = tags.split(",")
-    self.tags = tag_names.map { |name| Tag.where(:name => name).first || Tag.create(:name => name) }
+    tag_names = tags.split(", ")
+    
+    self.tags = tag_names.map do |name|
+      Tag.where(:name => name).first || Tag.create(:name => name)
+    end
   end  
 end

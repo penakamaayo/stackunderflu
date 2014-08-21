@@ -1,11 +1,17 @@
 %h1
   =@question.title
 %p
-  =simple_format(@question.body)
+  %strong
+    =simple_format(@question.body)
+
+%br/
+%hr
+%p
+  Tags:
+  %i
+    =simple_format(@question.tags_list)
 %footer.pull-right
   Asked
   =@question.created_at.to_formatted_s(:long)
   ,by
   =@question.user.full_name_with_username
-
-  =@question.tags_list
