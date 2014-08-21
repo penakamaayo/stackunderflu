@@ -6,8 +6,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-inverse{role: "navigation"}
-      .container-fluid
+    %nav.navbar.navbar-default{role: "navigation"}
+      .container
         .navbar-header
           %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
             %span.sr-only Toggle navigation
@@ -18,9 +18,9 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
-              %a{href: "/"} Home
+              = link_to "Home", "/"
             %li
-              %a{href: "/sessions/new"}
+              %a.btn.btn-default{href: "/sessions/new"}
                 Log
                 = current_user ? "out, " + current_user.last_name.capitalize : "in"
 
