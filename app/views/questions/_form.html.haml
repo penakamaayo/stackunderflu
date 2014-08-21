@@ -10,12 +10,15 @@
 
       .field
         = f.label :title
-        = f.text_field :title, :required => true
+        = f.text_field :title, :required => true, :placeholder => "Enter Subject"
       .field
         = f.label :body
-        = f.text_area :body, :required => true
+        = f.text_area :body, :required => true, :placeholder => "Enter Question Details"
       .field
         = f.hidden_field :user_id, :value => "#{current_user.id}"
+      .field
+        = f.label "Tags"
+        = f.text_field :tags_list, :placeholder => "Enter tags separated by commas"
       .actions
         = f.submit 'Save', :class => "btn btn-primary"
 
