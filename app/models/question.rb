@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
     end.join(", ")
   end
 
-  def tags_list=(tags)
+  def tags_list= tags
     tag_names = tags.split(",")
     
     self.tags = tag_names.map do |name|
