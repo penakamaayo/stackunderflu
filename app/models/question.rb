@@ -21,10 +21,10 @@ class Question < ActiveRecord::Base
   end
 
   def tags_list= tags
-    tag_names = tags.split(",")
-    
+    tag_names = tags.split(",").map(&:strip).reject(&:blank?)
+
     self.tags = tag_names.map do |name|
       Tag.where(:name => name).first || Tag.create(:name => name)
     end
-  end  
+  end
 end
